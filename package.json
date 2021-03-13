@@ -1,0 +1,22 @@
+{
+  "name": "mosler",
+  "version": "1.0.0",
+  "description": "Aplicación para automatizar el método de riesgos Mosler",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nestorPons/mosler.git"
+  },
+  "author": "Néstor Pons",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nestorPons/mosler/issues"
+  },
+  "homepage": "https://github.com/nestorPons/mosler#readme",
+  "dependencies": {
+    "materialize-css": "^1.0.0-rc.2"
+  }
+}
