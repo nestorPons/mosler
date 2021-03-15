@@ -1,0 +1,11 @@
+.my-helper {
+    display: flex;
+    align-items: center;
+    padding: auto;
+    cursor: pointer;
+    color: grey;
+}
+
+.input-field .helper-text.toglehide {
+    display: none;
+}

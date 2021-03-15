@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Método de riesgos Mosler</title>
 
-    <link rel="stylesheet   " href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="css/main.css">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
@@ -16,13 +16,137 @@
 <body>
     <div class="container">
         <h1>Método de riesgos Mosler</h1>
+        <div id="my-helper" class="my-helper">
+            <i class="material-icons">help</i>
+            <span>Mostrar la ayuda</span>
+        </div>
+        <div class="row">
+            <form id="frm">
+                <div class="row">
+                    <div class="input-field col m4">
+                        <input id="frmt" type="text" name="definicion" tabindex="1">
+                        <label for="frmt">Definición del tipo de riesgo</label>
+                        <span class="helper-text toglehide" data-error="wrong" data-success="right">El bien o el daño</span>
+                    </div>
+                    <div class="col s4 push-s6">
+                        <button class="btn waves-effect waves-light btn-large" type="submit" name="action" tabindex="8">
+                            Añadir
+                            <i class="material-icons right">add</i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col m2">
+                        <select class="" name="funcion" tabindex="2">
+                            <option value="0" disabled selected>Seleccione </option>
+                            <option value="1">Muy levemente Grave</option>
+                            <option value="2">Levemente grave</option>
+                            <option value="3">Medianamente grave</option>
+                            <option value="4">Grave</option>
+                            <option value="5">Muy Grave</option>
+                        </select>
+                        <label>Criterio de función</label>
+                        <span class="helper-text toglehide" data-error="wrong" data-success="right">
+                            <p>Los daños a clientes y empleados, ¿Cómo puede afectar?</p>
+                            <p>Los daños en las instalaciones, ¿Cómo puede afectar?</p>
+                            <p>Los daños económicos, ¿Cómo puede afectar?</p>
+                        </span>
+                    </div>
+                    <div class="input-field col m2">
+                        <select class="" name="sustitucion" tabindex="3">
+                            <option value="0" disabled selected>Seleccione </option>
+                            <option value="1">Muy fácilmente</option>
+                            <option value="2">Fácilmente</option>
+                            <option value="3">Sin michas dificultades</option>
+                            <option value="4">Difícilmente</option>
+                            <option value="5">Muy difícilmente</option>
+                        </select>
+                        <label>Criterio de sustitución</label>
+                        <span class="helper-text toglehide" data-error="wrong" data-success="right">
+                            <p>El bien a sustituir, ¿se puede encontrar?</p>
+                            <p>Los trabajos de sustitución, ¿serán rápidos?</p>
+                            <p>La actividad en la empresa, ¿continuará?</p>
+                        </span>
+                    </div>
+                    <div class="input-field col m2">
+                        <select class="" name="profundidad" tabindex="4">
+                            <option value="0" disabled selected>Seleccione </option>
+                            <option value="1">Perturbaciones muy leves</option>
+                            <option value="2">Perturvaciones leves</option>
+                            <option value="3">Perturvaciones limitadas</option>
+                            <option value="4">Graves perturvaciones</option>
+                            <option value="5">Perturvaciones muy graves</option>
+                        </select>
+                        <label>Criterio de profundidad</label>
+                        <span class="helper-text  toglehide" data-error="wrong" data-success="right">
+                            <p>¿Causan perturbaciones en el personal?</p>
+                            <p>¿Causan perturbaciones en los clientes?</p>
+                            <p>¿Causan perturbaciones en el sector?</p>
+                        </span>
+                    </div>
+                    <div class="input-field col m2">
+                        <select class="" name="extension" tabindex="5">
+                            <option value="0" disabled selected>Seleccione </option>
+                            <option value="1">De carácter indevidual</option>
+                            <option value="2">De carácter local</option>
+                            <option value="3">De carácter regional</option>
+                            <option value="4">De carácter nacional</option>
+                            <option value="5">De carácter internacional</option>
+                        </select>
+                        <label>Criterio de extensión</label>
+                        <span class="helper-text  toglehide" data-error="wrong" data-success="right">
+                            <p>Los daños en la imagen de la entidad, ¿han sido?</p>
+                            <p>Los daños económicos, ¿han sido?</p>
+                            <p>Los daños en los bienes, ¿han sido?</p>
+                        </span>
+                    </div>
+                    <div class="input-field col m2">
+                        <select class="" name="agresion" tabindex="6">
+                            <option value="0" disabled selected>Seleccione </option>
+                            <option value="1">Muy baja</option>
+                            <option value="2">Baja</option>
+                            <option value="3">Normal </option>
+                            <option value="4">Alta</option>
+                            <option value="5">Muy alta</option>
+                        </select>
+                        <label>Criterio de agresión</label>
+                        <span class="helper-text  toglehide" data-error="wrong" data-success="right">
+                            <p>¿Cómo es el nivel de delincuencia en el sector y/o en el territorio?</p>
+                            <p>¿Las instalaciones se encuentran aisladas o en zona de actividad natural?</p>
+                            <p>¿Existen materias peligrosas o gran cantidad de elementos técnicos?</p>
+                        </span>
+                    </div>
+                    <div class="input-field col m2">
+                        <select class="" name="vulnerabilidad" tabindex="7">
+                            <option value="0" disabled selected>Seleccione </option>
+                            <option value="1">Muy baja</option>
+                            <option value="2">Baja</option>
+                            <option value="3">Normal </option>
+                            <option value="4">Alta</option>
+                            <option value="5">Muy alta</option>
+                        </select>
+                        <label>Criterio de vulnerabilidad</label>
+                        <span class="helper-text  toglehide" data-error="wrong" data-success="right">
+                            <p>Los daños podrán evitarse con las medidas de seguridad existentes.</p>
+                            <p>Existencia de ayuda exterior en la zona.</p>
+                            <p>Las perdidas están aseguradas.</p>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
         <div class="card material-table">
             <span class="table-title">Tabla Mosler</span>
-            <table id="datatable" class="responsive-table highlight z-depth-2">
-
+            <table id="datatable" class="responsive-table highlight z-depth-2 centered">
                 <thead>
                     <tr>
-                        <th class="green lighten-3">Tipo de riesgo</th>
+                        <th rowspan="2" class="orange lighten-3">Tipo de riesgo</th>
+                        <th colspan="6" class="green lighten-3">Coeficientes de análisis de riesgos</th>
+                        <th colspan="3" class="cyan lighten-3">Cálculos de evaluación de riesgo</th>
+                        <th rowspan="2" class="red lighten-3">Riesgo</th>
+                    </tr>
+                    <tr>
                         <th class="green lighten-3">Función</th>
                         <th class="green lighten-3">Sustitución</th>
                         <th class="green lighten-3">Profundidad</th>
@@ -33,115 +157,33 @@
                         <th class="cyan lighten-3">Carácter</th>
                         <th class="cyan lighten-3">Probabilidad</th>
                         <th class="cyan lighten-3">Cuantificación</th>
-
-                        <th class="red lighten-3">Riesgo</th>                       
                     </tr>
                 </thead>
 
                 <tbody>
                     <template>
                         <tr>
-                            <th name="definicion">incendios de graves</th>
-                            <th name="funcion">F2</th>
-                            <th name="sustitucion">S3</th>
-                            <th name="profundidad">P4</th>
-                            <th name="extension">E5</th>
-                            <th name="agresion">A6</th>
-                            <th name="vulnerabilidad">V7</th>
-                            <th name="caracter">V7</th>
-                            <th name="probabilidad">V7</th>
-                            <th name="cuantificacion">V7</th>
-                            <th name="riesgo">V7</th>
+                            <th name="definicion">DEFINICIÓN</th>
+                            <th name="funcion">FUNCION</th>
+                            <th name="sustitucion">SUSTITUCION</th>
+                            <th name="profundidad">PROFUNDIDAD</th>
+                            <th name="extension">EXTENSION</th>
+                            <th name="agresion">AGRESION</th>
+                            <th name="vulnerabilidad">VULNERABILIDAD</th>
+                            <th name="caracter">CARACTER</th>
+                            <th name="probabilidad">PROBABILIDAD</th>
+                            <th name="cuantificacion">CUANTIFICACION</th>
+                            <th name="riesgo">RIESGO</th>
                         </tr>
                     </template>
                 </tbody>
             </table>
-            <div class="row">
-                <form id="frm">
-                    <div class="row">
-                        <div class="input-field col m4">
-                            <input id="frmt" type="text" name="definicion">
-                            <label for="frmt">Define el tipo de riesgo</label>
-                            <!-- <span class="helper-text" data-error="wrong" data-success="right">Helper text</span> -->
-                        </div>
-                        <div class="input-field col s9 m2">
-                            <select class="" name="funcion">
-                                <option value="0" disabled selected>Seleccione una opción</option>
-                                <option value="1">Muy levemente Grave</option>
-                                <option value="2">Levemente grave</option>
-                                <option value="3">Medianamente grave</option>
-                                <option value="4">Grave</option>
-                                <option value="5">Muy Grave</option>
-                            </select>
-                            <label>Criterio de función</label>
-                        </div>
-                        <div class="input-field col s9 m2">
-                            <select class="" name="sustitucion">
-                                <option value="0" disabled selected>Seleccione una opción</option>
-                                <option value="1">Muy fácilmente</option>
-                                <option value="2">Fácilmente</option>
-                                <option value="3">Sin michas dificultades</option>
-                                <option value="4">Difícilmente</option>
-                                <option value="5">Muy difícilmente</option>
-                            </select>
-                            <label>Criterio de sustitución</label>
-                        </div>
-                        <div class="input-field col s9 m2">
-                            <select class="" name="profundidad">
-                                <option value="0" disabled selected>Seleccione una opción</option>
-                                <option value="1">Perturbaciones muy leves</option>
-                                <option value="2">Perturvaciones leves</option>
-                                <option value="3">Perturvaciones limitadas</option>
-                                <option value="4">Graves perturvaciones</option>
-                                <option value="5">Perturvaciones muy graves</option>
-                            </select>
-                            <label>Criterio de profundidad</label>
-                        </div>
-                        <div class="input-field col s9 m2">
-                            <select class="" name="extension">
-                                <option value="0" disabled selected>Seleccione una opción</option>
-                                <option value="1">De carácter indevidual</option>
-                                <option value="2">De carácter local</option>
-                                <option value="3">De carácter regional</option>
-                                <option value="4">De carácter nacional</option>
-                                <option value="5">De carácter internacional</option>
-                            </select>
-                            <label>Criterio de extensión</label>
-                        </div>
-                        <div class="input-field col s9 m2">
-                            <select class="" name="agresion">
-                                <option value="0" disabled selected>Seleccione una opción</option>
-                                <option value="1">Muy baja</option>
-                                <option value="2">Baja</option>
-                                <option value="3">Normal </option>
-                                <option value="4">Alta</option>
-                                <option value="5">Muy alta</option>
-                            </select>
-                            <label>Criterio de agresión</label>
-                        </div>
-                        <div class="input-field col s9 m2">
-                            <select class="" name="vulnerabilidad">
-                                <option value="0" disabled selected>Seleccione una opción</option>
-                                <option value="1">Muy baja</option>
-                                <option value="2">Baja</option>
-                                <option value="3">Normal </option>
-                                <option value="4">Alta</option>
-                                <option value="5">Muy alta</option>
-                            </select>
-                            <label>Criterio de vulnerabilidad</label>
-                        </div>
-                    </div>
-                    <button class="btn waves-effect waves-light btn-large" type="submit" name="action">
-                        Añadir
-                        <i class="material-icons right">add</i>
-                    </button>
-                </form>
-            </div>
-            <!--JavaScript at end of body for optimized loading-->
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-            <script src="js/index.js"></script>
+        </div>
+        <!--JavaScript at end of body for optimized loading-->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="js/index.js"></script>
+        <script src="js/actions.js"></script>
 </body>
 
 </html>

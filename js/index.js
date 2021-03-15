@@ -1,99 +1,105 @@
 var data = {}
-jQuery(async function () {
+jQuery(function () {
   $('select').formSelect();
-  $('#frm').on("submit", function (event) {
+  $('#frm').on("submit", async function (event) {
     event.preventDefault();
     data = $(this).serializeArray()
 
-    calculaCaracterDeRiesgo()
-    calculaProbabilidad()
-    calculaCuantificacion()
-    calculoYClasificacion()
+    await calculaCaracterDeRiesgo()
+    await calculaProbabilidad()
+    await calculaCuantificacion()
 
-    console.log(data)
     crearFilaTabla()
     if (data.length == 7) {
     }
+  
     // todo:: $('#frm')[0].reset()
   })
 });
 
 function crearFilaTabla() {
-  let t = $('table template').contents()
-
+  let t = $('table template').contents().clone()
   for (let d of data) {
+    console.log(d.name, d.value)
     claseCSS = d.class || ''
     console.log(claseCSS)
     t.find(`[name="${d.name}"]`).text(d.value).addClass(claseCSS)
   }
   t.appendTo('table tbody')
+  console.log(data)
 }
 
-async function calculaCaracterDeRiesgo() {
+function calculaCaracterDeRiesgo() {
   // I = F X S
   // D = P X E
   // C = I + D
 
-  let f = data[1].value
-  let s = data[2].value
+  let f = parseInt(data[1].value)
+  let s = parseInt(data[2].value)
+  let i = f * s
+  
+  let p = parseInt(data[3].value)
+  let e = parseInt(data[4].value)
+  let d = p * e
 
-  await agregarDatos("caracter", f + s)
+  agregarDatos("caracter", i + d)
 
 }
 
-async function calculaProbabilidad() {
+function calculaProbabilidad() {
   // PR = A X V
 
-  let a = data[5].value
-  let v = data[6].value
+  let a = parseInt(data[5].value)
+  let v = parseInt(data[6].value)
 
-  await agregarDatos("probabilidad", a * v)
+  agregarDatos("probabilidad", a * v)
 
 }
 
-async function calculaCuantificacion() {
+function calculaCuantificacion() {
   // ER = C X PR
 
-  let c = data[7].value
-  let pr = data[8].value
-
-  await agregarDatos("cuantificacion", c * pr)
-
-}
-
-async function calculoYClasificacion() {
-
-  let er = parseInt(data[9].value)
+  let c =  parseInt(data[7].value)
+  let pr = parseInt(data[8].value)
+  let er = c * pr
   let v = ""
-  let c = ""
+  let css = ""
 
+  agregarDatos("cuantificacion", er)
+
+  // Clase para la celda
   switch (true) {
     case (er < 251):
-      c = "green darken-1"
+      css = "green darken-1"
       v = "Muy bajo"
       break
     case (er < 501):
-      c = "yellow darken-1"
+      css = "yellow darken-1"
       v = "Pequeño"
       break
     case (er < 751):
-      c = "orange darken-1"
+      css = "orange darken-1"
       v = "normal"
       break
     case (er < 1001):
-      c = "deep-orange darken-1"
+      css = "deep-orange darken-1"
       v = "Grande"
       break
-    case (12):
-      c = "red darken-1"
+    default:
+      css = "red darken-1"
       v = "Elevado"
   }
-  await agregarDatos("riesgo", v, c)
+  agregarDatos("riesgo", v, css)
 }
 
 function agregarDatos(nombre, valor, claseCSS = "") {
-  return new Promise((resolve) => {
-    data.push({ "name": nombre, "value": valor, class: claseCSS })
-    resolve()
+  return new Promise((resolve, reject) => {
+    try {
+      data.push({ "name": nombre, "value": valor, class: claseCSS })
+      resolve()
+    } catch (error) {
+      console.error('ERROR GUARDANDO LOS DATOS EN LA VARIABLE DATA')
+      reject()
+    }
   })
 }
