@@ -4,6 +4,7 @@
     padding: auto;
     cursor: pointer;
     color: grey;
+    width: max-content;
 }
 
 .input-field .helper-text.toglehide {

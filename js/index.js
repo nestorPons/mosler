@@ -4,13 +4,16 @@ jQuery(function() {
     $('#frm').on("submit", async function(event) {
         event.preventDefault();
         data = $(this).serializeArray()
-
-        await calculaCaracterDeRiesgo()
-        await calculaProbabilidad()
-        await calculaCuantificacion()
+        try {
+            await calculaCaracterDeRiesgo()
+            await calculaProbabilidad()
+            await calculaCuantificacion()
+        } catch (error) {
+            alert('No se han rellenado todos los campos')
+            return false
+        }
 
         crearFilaTabla()
-        if (data.length == 7) {}
 
         $('#frm')[0].reset()
     })

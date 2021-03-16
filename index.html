@@ -24,12 +24,12 @@
             <form id="frm">
                 <div class="row">
                     <div class="input-field col m4">
-                        <input id="frmt" type="text" name="definicion" tabindex="1">
+                        <input id="frmt" type="text" name="definicion" required>
                         <label for="frmt">Definición del tipo de riesgo</label>
                         <span class="helper-text toglehide" data-error="wrong" data-success="right">El bien o el daño</span>
                     </div>
                     <div class="col s4 push-s6">
-                        <button class="btn waves-effect waves-light btn-large" type="submit" name="action" tabindex="8">
+                        <button class="btn waves-effect waves-light btn-large" type="submit" name="action" tabindex="0">
                             Añadir
                             <i class="material-icons right">add</i>
                         </button>
@@ -38,8 +38,8 @@
 
                 <div class="row">
                     <div class="input-field col m2">
-                        <select class="" name="funcion" tabindex="2">
-                            <option value="0" disabled selected>Seleccione </option>
+                        <select class="" name="funcion">
+                            <option value="" disabled selected>Seleccione</option>
                             <option value="1">Muy levemente Grave</option>
                             <option value="2">Levemente grave</option>
                             <option value="3">Medianamente grave</option>
@@ -54,8 +54,8 @@
                         </span>
                     </div>
                     <div class="input-field col m2">
-                        <select class="" name="sustitucion" tabindex="3">
-                            <option value="0" disabled selected>Seleccione </option>
+                        <select class="" name="sustitucion">
+                            <option value="" disabled selected>Seleccione </option>
                             <option value="1">Muy fácilmente</option>
                             <option value="2">Fácilmente</option>
                             <option value="3">Sin michas dificultades</option>
@@ -70,8 +70,8 @@
                         </span>
                     </div>
                     <div class="input-field col m2">
-                        <select class="" name="profundidad" tabindex="4">
-                            <option value="0" disabled selected>Seleccione </option>
+                        <select class="" name="profundidad">
+                            <option value="" disabled selected>Seleccione </option>
                             <option value="1">Perturbaciones muy leves</option>
                             <option value="2">Perturvaciones leves</option>
                             <option value="3">Perturvaciones limitadas</option>
@@ -86,8 +86,8 @@
                         </span>
                     </div>
                     <div class="input-field col m2">
-                        <select class="" name="extension" tabindex="5">
-                            <option value="0" disabled selected>Seleccione </option>
+                        <select class="" name="extension">
+                            <option value="" disabled selected>Seleccione </option>
                             <option value="1">De carácter indevidual</option>
                             <option value="2">De carácter local</option>
                             <option value="3">De carácter regional</option>
@@ -102,8 +102,8 @@
                         </span>
                     </div>
                     <div class="input-field col m2">
-                        <select class="" name="agresion" tabindex="6">
-                            <option value="0" disabled selected>Seleccione </option>
+                        <select class="" name="agresion">
+                            <option value="" disabled selected>Seleccione </option>
                             <option value="1">Muy baja</option>
                             <option value="2">Baja</option>
                             <option value="3">Normal </option>
@@ -118,8 +118,8 @@
                         </span>
                     </div>
                     <div class="input-field col m2">
-                        <select class="" name="vulnerabilidad" tabindex="7">
-                            <option value="0" disabled selected>Seleccione </option>
+                        <select class="" name="vulnerabilidad">
+                            <option value="" disabled selected>Seleccione </option>
                             <option value="1">Muy baja</option>
                             <option value="2">Baja</option>
                             <option value="3">Normal </option>
