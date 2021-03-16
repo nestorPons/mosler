@@ -8,5 +8,8 @@ $('#my-helper').on('click', function(e) {
             self.find('span').text('Mostrar la ayuda')
         }
     })
+})
 
+$('#table-print').on('click', function() {
+    $('#datatable').printThis()
 })

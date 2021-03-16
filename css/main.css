@@ -9,3 +9,7 @@
 .input-field .helper-text.toglehide {
     display: none;
 }
+
+#table-print {
+    float: right;
+}
