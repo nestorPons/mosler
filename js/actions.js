@@ -13,3 +13,7 @@ $('#my-helper').on('click', function(e) {
 $('#table-print').on('click', function() {
     $('#datatable').printThis()
 })
+
+$('#chart-print').on('click', function() {
+    imprimirGrafica()
+})

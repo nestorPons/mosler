@@ -11,6 +11,10 @@
     display: none;
 }
 
-#table-print {
+.padding-right {
     float: right;
+}
+
+.tab-content {
+    padding: 10px;
 }

@@ -1,6 +1,11 @@
 var data = {}
 jQuery(function() {
     $('select').formSelect();
+    $('ul.tabs').tabs({
+        swipeable: true,
+        responsiveThreshold: 1920
+    });
+
     $('#frm').on("submit", async function(event) {
         event.preventDefault();
         data = $(this).serializeArray()
@@ -14,7 +19,7 @@ jQuery(function() {
         }
 
         crearFilaTabla()
-
+        cargarDatosGrafica(data)
         $('#frm')[0].reset()
     })
 });
@@ -22,13 +27,10 @@ jQuery(function() {
 function crearFilaTabla() {
     let t = $('table template').contents().clone()
     for (let d of data) {
-        console.log(d.name, d.value)
         claseCSS = d.class || ''
-        console.log(claseCSS)
         t.find(`[name="${d.name}"]`).text(d.value).addClass(claseCSS)
     }
     t.appendTo('table tbody')
-    console.log(data)
 }
 
 function calculaCaracterDeRiesgo() {
@@ -66,41 +68,48 @@ function calculaCuantificacion() {
     let er = c * pr
     let v = ""
     let css = ""
+    let hex = ""
 
     agregarDatos("cuantificacion", er)
 
     // Clase para la celda
     switch (true) {
         case (er < 251):
+            hex = '#43a047'
             css = "green darken-1"
             v = "Muy bajo"
             break
         case (er < 501):
+            hex = "#fdd835"
             css = "yellow darken-1"
             v = "Pequeño"
             break
         case (er < 751):
+            hex = "#fb8c00"
             css = "orange darken-1"
             v = "normal"
             break
         case (er < 1001):
+            hex = "#f4511e"
             css = "deep-orange darken-1"
             v = "Grande"
             break
         default:
+            hex = "#e53935"
             css = "red darken-1"
             v = "Elevado"
     }
-    agregarDatos("riesgo", v, css)
+    agregarDatos("riesgo", v, css, hex)
 }
 
-function agregarDatos(nombre, valor, claseCSS = "") {
+function agregarDatos(nombre, valor, claseCSS = "", hex = "") {
     return new Promise((resolve, reject) => {
         try {
             data.push({
                 "name": nombre,
                 "value": valor,
-                class: claseCSS
+                class: claseCSS,
+                hex: hex
             })
             resolve()
         } catch (error) {
