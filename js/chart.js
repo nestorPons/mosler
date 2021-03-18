@@ -39,16 +39,13 @@ var chart = new Chart(ctx, {
 });
 
 function cargarDatosGrafica(data) {
-    console.log(data)
     addData(data[0].value, data[9].value, data[10].hex)
 }
 
 function addData(label, data, color) {
-    console.log(color)
     chart.data.labels.push(label);
 
     chart.data.datasets.forEach((dataset) => {
-        console.log(color)
         dataset.data.push(data);
         dataset.backgroundColor.push(color);
     });

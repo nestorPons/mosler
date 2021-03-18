@@ -1,4 +1,5 @@
 var data = {}
+
 jQuery(function() {
     $('select').formSelect();
     $('ul.tabs').tabs({
@@ -6,27 +7,32 @@ jQuery(function() {
         responsiveThreshold: 1920
     });
 
-    $('#frm').on("submit", async function(event) {
-        event.preventDefault();
-        data = $(this).serializeArray()
-        try {
-            await calculaCaracterDeRiesgo()
-            await calculaProbabilidad()
-            await calculaCuantificacion()
-        } catch (error) {
-            alert('No se han rellenado todos los campos')
-            return false
-        }
+    // loadTest(); // TODO::
 
-        crearFilaTabla()
-        cargarDatosGrafica(data)
-        $('#frm')[0].reset()
-    })
 });
 
-function crearFilaTabla() {
+async function cargarDatos(_data, callback) {
+    data = _data
+    try {
+        await calculaCaracterDeRiesgo()
+        await calculaProbabilidad()
+        await calculaCuantificacion()
+        crearFilaTabla()
+        cargarDatosGrafica(data)
+
+        $('#frm')[0].reset()
+        typeof(callback) == 'function' && callback()
+    } catch (error) {
+        alert('No se han rellenado todos los campos')
+        return false
+    }
+
+}
+
+function crearFilaTabla(_data = data) {
+
     let t = $('table template').contents().clone()
-    for (let d of data) {
+    for (let d of _data) {
         claseCSS = d.class || ''
         t.find(`[name="${d.name}"]`).text(d.value).addClass(claseCSS)
     }
@@ -117,4 +123,8 @@ function agregarDatos(nombre, valor, claseCSS = "", hex = "") {
             reject()
         }
     })
+}
+
+function ajustarAlto() {
+    document.querySelector('.tabs-content.carousel').style.height = window.innerHeight + "px";
 }

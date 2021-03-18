@@ -1,3 +1,10 @@
+$('#frm').on("submit", async function(event) {
+    event.preventDefault();
+    let data = $(this).serializeArray()
+    await cargarDatos(data, ajustarAlto)
+
+})
+
 $('#my-helper').on('click', function(e) {
     self = $(this)
     $('.toglehide').slideToggle(function() {
