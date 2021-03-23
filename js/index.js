@@ -24,15 +24,16 @@ async function cargarDatos(data, callback) {
         typeof(callback) == 'function' && callback()
     } catch (error) {
         alert('No se han rellenado todos los campos')
+        console.error(error)
         return false
     }
 
 }
 
-function crearFilaTabla(row = row) {
+function crearFilaTabla(_row = row) {
 
     let t = $('table template').contents().clone()
-    for (let d of row) {
+    for (let d of _row) {
         claseCSS = d.class || ''
         t.find(`[name="${d.name}"]`).text(d.value).addClass(claseCSS)
     }
