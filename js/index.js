@@ -1,4 +1,4 @@
-var data = {}
+var row = {}
 
 jQuery(function() {
     $('select').formSelect();
@@ -7,18 +7,18 @@ jQuery(function() {
         responsiveThreshold: 1920
     });
 
-    // loadTest(); // TODO::
+    loadTest(); // TODO::
 
 });
 
-async function cargarDatos(_data, callback) {
-    data = _data
+async function cargarDatos(data, callback) {
+    row = data
     try {
         await calculaCaracterDeRiesgo()
         await calculaProbabilidad()
         await calculaCuantificacion()
         crearFilaTabla()
-        cargarDatosGrafica(data)
+        cargarDatosGrafica(row)
 
         $('#frm')[0].reset()
         typeof(callback) == 'function' && callback()
@@ -29,10 +29,10 @@ async function cargarDatos(_data, callback) {
 
 }
 
-function crearFilaTabla(_data = data) {
+function crearFilaTabla(row = row) {
 
     let t = $('table template').contents().clone()
-    for (let d of _data) {
+    for (let d of row) {
         claseCSS = d.class || ''
         t.find(`[name="${d.name}"]`).text(d.value).addClass(claseCSS)
     }
@@ -44,12 +44,12 @@ function calculaCaracterDeRiesgo() {
     // D = P X E
     // C = I + D
 
-    let f = parseInt(data[1].value)
-    let s = parseInt(data[2].value)
+    let f = parseInt(row[1].value)
+    let s = parseInt(row[2].value)
     let i = f * s
 
-    let p = parseInt(data[3].value)
-    let e = parseInt(data[4].value)
+    let p = parseInt(row[3].value)
+    let e = parseInt(row[4].value)
     let d = p * e
 
     agregarDatos("caracter", i + d)
@@ -59,8 +59,8 @@ function calculaCaracterDeRiesgo() {
 function calculaProbabilidad() {
     // PR = A X V
 
-    let a = parseInt(data[5].value)
-    let v = parseInt(data[6].value)
+    let a = parseInt(row[5].value)
+    let v = parseInt(row[6].value)
 
     agregarDatos("probabilidad", a * v)
 
@@ -69,8 +69,8 @@ function calculaProbabilidad() {
 function calculaCuantificacion() {
     // ER = C X PR
 
-    let c = parseInt(data[7].value)
-    let pr = parseInt(data[8].value)
+    let c = parseInt(row[7].value)
+    let pr = parseInt(row[8].value)
     let er = c * pr
     let v = ""
     let css = ""
@@ -111,7 +111,7 @@ function calculaCuantificacion() {
 function agregarDatos(nombre, valor, claseCSS = "", hex = "") {
     return new Promise((resolve, reject) => {
         try {
-            data.push({
+            row.push({
                 "name": nombre,
                 "value": valor,
                 class: claseCSS,

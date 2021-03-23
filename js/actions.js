@@ -5,6 +5,15 @@ $('#frm').on("submit", async function(event) {
 
 })
 
+$('table').on('click', '.delete-row', function(e) {
+    e.stopPropagation()
+
+    $(this).parents('tr').fadeOut(function() {
+        $(this).remove()
+    })
+
+})
+
 $('#my-helper').on('click', function(e) {
     self = $(this)
     $('.toglehide').slideToggle(function() {
@@ -18,7 +27,13 @@ $('#my-helper').on('click', function(e) {
 })
 
 $('#table-print').on('click', function() {
-    $('#datatable').printThis()
+    let el = $('#datatable').clone()
+    el.printThis({
+        beforePrint: function() {
+            el.find('[name="acciones"]').remove()
+            el.find('[name="definicion"]').attr('colspan', 2)
+        }
+    })
 })
 
 $('#chart-print').on('click', function() {

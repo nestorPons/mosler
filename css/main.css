@@ -7,6 +7,14 @@
     width: max-content;
 }
 
+.icon-btn {
+    cursor: pointer;
+}
+
+.red-text {
+    color: red;
+}
+
 .input-field .helper-text.toglehide {
     display: none;
 }

@@ -92,12 +92,12 @@ function actualizaChartDato(dato) {
 
 function imprimirGrafica() {
 
-    var canvas = document.querySelector("#myChart");
-    var canvas_img = canvas.toDataURL("image/png", 1.0); //JPEG will not match background color
-    var pdf = new jsPDF('landscape', 'in', 'letter'); //orientation, units, page size
+    let canvas = document.querySelector("#myChart");
+    let canvas_img = canvas.toDataURL("image/png", 1.0); //JPEG will not match background color
+    let pdf = new jsPDF('landscape', 'in', 'letter'); //orientation, units, page size
     pdf.addImage(canvas_img, 'png', .5, 1.75, 10, 5); //image, type, padding left, padding top, width, height
     pdf.autoPrint(); //print window automatically opened with pdf
-    var blob = pdf.output("bloburl");
+    let blob = pdf.output("bloburl");
     window.open(blob);
 
 }
