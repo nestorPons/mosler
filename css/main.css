@@ -26,3 +26,7 @@
 .tab-content {
     padding: 10px;
 }
+
+table tbody [name="riesgo"] {
+    color: white
+}
