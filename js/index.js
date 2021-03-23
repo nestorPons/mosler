@@ -7,7 +7,7 @@ jQuery(function() {
         responsiveThreshold: 1920
     });
 
-    loadTest(); // TODO::
+    //loadTest(); // TODO::
 
 });
 
